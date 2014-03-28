@@ -1,0 +1,11 @@
+  
+script(type="text/x-handlebars", data-template-name="score")
+  
+  div(id="scoreContainer")
+    <h2> You scored: {{view.finalScore}} </h2>
+
+  div(id="timelineContainer")
+    <input id="button" type="submit" value="Post To Timeline" {{action "post" target="view"}}>
+
+  div(id="buttonContainer")
+    <input id="button" type="submit" value="Main Menu" {{action "goHome" target="view"}}>

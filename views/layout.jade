@@ -1,0 +1,31 @@
+doctype html
+html
+  head    
+    title= title
+    link(rel="stylesheet", href="/stylesheets/style.css")
+  body
+
+    <!-- EXPRESS APP MAIN TEMPLATE - INDEX FILE - (EMBER APP MAIN TEMPLATE) -->   
+    block content
+    
+    <!-- EMBER APP OTHER TEMPLATES -->
+    include templates/home
+    include templates/play
+    include templates/score
+   
+    <!-- EMBER AND PARSE APP LIBS -->
+    <script src="javascripts/libs/jquery-1.10.2.js"></script>
+    <script src="javascripts/libs/handlebars-1.1.2.js"></script>
+    <script src="javascripts/libs/ember-1.4.0.js"></script>
+    <script src="javascripts/libs/parse-1.2.17.min.js"></script>
+  
+    <!-- EMBER APP MAIN FILE -->
+    <script src="javascripts/app.js"> </script>
+
+    <!-- EMBER APP CLASSES -->
+    <script src="javascripts/classes/dataSources/fbDataSource.js"></script>
+    <script src="javascripts/classes/dataModels/dataModels.js"></script>
+    <script src="javascripts/classes/controllers/mainController.js"></script>
+    <script src="javascripts/classes/views/homeView.js"></script>
+    <script src="javascripts/classes/views/playView.js"></script>
+    <script src="javascripts/classes/views/scoreView.js"></script>

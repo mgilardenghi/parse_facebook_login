@@ -1,0 +1,23 @@
+
+script(type="text/x-handlebars", data-template-name="play")  
+  
+  {{#unless view.isLastFriend}}
+  
+  div(id="titleContainer") 
+    <h2> {{view.title}} </h2>
+
+  div(id="pictureContainer") 
+    <img id="picture" height=300 width=300 {{bind-attr src="view.pictureURL"}}> </img>
+   
+  div(id="textBoxContainer") 
+   {{input id="textBox" type="text" value=view.inputName placeholder= "Example:  Joe"}}
+   
+  div(id="buttonContainer")
+    <input id="button" type="submit" value="Next Friend" {{action "nextFriend" target="view"}}>
+
+  {{else}}
+
+  div(id="getScoreContainer")
+    <input id="button" type="submit" value="Get your Score" {{action "goScore" target="view"}}>
+
+  {{/unless}}

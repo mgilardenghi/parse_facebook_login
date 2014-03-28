@@ -1,0 +1,91 @@
+
+/********************************************************************
+*
+*  Cascading Style Sheets. 
+*  Style global configuration file
+*  
+********************************************************************/
+
+body {
+  padding: 30px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  //background-color: #F6F2E8;
+}
+
+#titleContainer {
+  position: absolute;
+  top: 8%;
+  width: 95%;  
+  text-align: center;
+  //border: solid black 2px;
+}
+
+#pictureContainer {
+  position: absolute;
+  top: 16%;
+  width: 95%;  
+  text-align: center;
+}
+
+#textBoxContainer {
+  position: absolute;
+  width: 95%; 
+  text-align: center;
+  top: 63%;
+}
+
+#getScoreContainer {
+  position: absolute;
+  width: 95%; 
+  text-align: center;
+  top: 50%;
+}
+
+#scoreContainer {
+  position: absolute;
+  width: 95%; 
+  text-align: center;
+  top: 35%;
+}
+
+#timelineContainer {
+  position: absolute;
+  width: 95%; 
+  text-align: center;
+  top: 50%;
+}
+
+#textBox {
+  text-align: center;
+  border: solid 2px black;
+  line-color: black;
+  box-shadow: 1px 1px 0 #DDDDDD;
+  width: 230px;
+  font: 20px "Arial";
+  font-weight: bold;
+  color: black;
+  background-color: #ECECED;
+}
+
+#buttonContainer {
+  position: absolute;
+  bottom: 15%;
+  width: 95%;  
+  text-align: center;
+}
+
+#button {
+  height: 40px; 
+  width: 220px;   
+  text-align: center;
+  cursor: pointer; 
+  background-color: DarkBlue; 
+  font-weight: bold; 
+  color: white;
+}
+
+#loading {
+  visibility: hidden
+}
+
+#document.getElementById("myP2").style.visibility="hidden";

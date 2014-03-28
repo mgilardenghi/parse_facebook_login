@@ -1,0 +1,22 @@
+
+script(type="text/x-handlebars", data-template-name="home")
+  
+  div(id="titleContainer") 
+    <h2>{{view.title}}</h2>         
+    
+  div(id="pictureContainer") 
+    <img id="picture" height=300 width=300 {{bind-attr src="view.pictureUrl"}}></img>
+  
+  {{#unless view.isLoggedIn}}
+
+  div(id="buttonContainer")
+    <img id="loading" height=70 width=250 src="images/loading.gif"></img><br>
+    <input id="button" type="submit" value="Log in with Facebook" {{action "login" target="view"}}>
+  
+  {{else}}
+
+  div(id="buttonContainer")
+    <input id="button" type="submit" value="Lets Play!" {{action "goPlay" target="view"}}><br>
+    <input id="button" type="submit" value="Log out" {{action "logout" target="view"}}>
+  
+  {{/unless}}
