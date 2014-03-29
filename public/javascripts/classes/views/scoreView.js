@@ -8,6 +8,8 @@
     },
     actions: {
       post: function() {
+        var self;
+        self = this;
         return App.MainController.post(function(error) {
           if (!error) {
             return alert("Congrats! Your score is now posted on Facebook.");

@@ -17,6 +17,7 @@ App.ScoreView = Ember.View.extend
 		## posts score to facebook timeline
 		post: ->
 
+			self = this
 			App.MainController.post (error) ->
 				unless error
 					alert "Congrats! Your score is now posted on Facebook."

@@ -52,6 +52,7 @@
     fblogout: function(callback) {
       FB.getLoginStatus(function(response) {
         if (response.status === "unknown") {
+          console.log("error");
           return callback("error");
         } else {
           FB.logout();
