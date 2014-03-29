@@ -50,13 +50,14 @@ App.fbDataSource = Ember.Object.create
           self.registerUser user, callback
         error: (error) ->
           ## if user closes facebook login pop-up, error is empty so its not sent
+          console.log error
           if error
             callback null, error
           console.log "USER NOT CONNECTED"
  
   # logs out from Facebook
   fblogout: ->
-
+    
     FB.logout()
     console.log "USER DISCONNECTED"
 

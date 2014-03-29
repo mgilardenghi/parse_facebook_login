@@ -41,6 +41,7 @@
             return self.registerUser(user, callback);
           },
           error: function(error) {
+            console.log(error);
             if (error) {
               callback(null, error);
             }
