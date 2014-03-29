@@ -55,7 +55,7 @@ App.HomeView = Ember.View.extend
 			confirm = window.confirm "ALERT: You will be disconnected from Facebook!"
 			if confirm
 				App.MainController.logout () ->
-					location.reload
+					location.reload()
 
 		## transition to play route
 		goPlay: ->
