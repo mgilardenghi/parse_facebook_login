@@ -28,14 +28,14 @@
             self.set("title", "Hi there, " + data.fullname());
             return self.set("pictureUrl", data.picture);
           } else {
-            alert(JSON.stringify(error));
+            alert(JSON.stringify(error) + "\n\n APPLICATION WILL BE RELOADED. TRY IT AGAIN.");
             return location.reload();
           }
         });
       },
       logout: function() {
         var confirm;
-        confirm = window.confirm("ALERT: \nYou will be disconnected from Facebook!");
+        confirm = window.confirm("ALERT: You will be disconnected from Facebook!");
         if (confirm) {
           return App.MainController.logout(function(error) {
             if (error) {

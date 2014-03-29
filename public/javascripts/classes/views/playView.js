@@ -18,7 +18,7 @@
           self.set("inputName", "");
           return console.log("\nReal Name: " + App.MainController.user.friends[App.MainController.random].first_name);
         } else {
-          alert(JSON.stringify(error) + "\n\n APPLICATION WILL BE RELOADED. THEN TRY IT AGAIN.");
+          alert(JSON.stringify(error) + "\n\n APPLICATION WILL BE RELOADED. TRY IT AGAIN.");
           App.MainController.set("isLoggedIn", false);
           return self.get("controller").transitionToRoute("home");
         }

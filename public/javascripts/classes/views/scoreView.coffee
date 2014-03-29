@@ -22,7 +22,7 @@ App.ScoreView = Ember.View.extend
 				unless error
 					alert "Congrats! Your score is now posted on Facebook."
 				else
-					alert JSON.stringify(error) + "\n\n APPLICATION WILL BE RELOADED. THEN TRY IT AGAIN."
+					alert JSON.stringify(error) + "\n\n APPLICATION WILL BE RELOADED. TRY IT AGAIN."
 					App.MainController.set "isLoggedIn", false
 					self.get("controller").transitionToRoute "home"
 

@@ -59,6 +59,7 @@ App.fbDataSource = Ember.Object.create
   fblogout: (callback) ->
 
     FB.getLoginStatus (response) ->
+      console.log "error"
       if response.status == "unknown"
         console.log "error"
         callback "error" 
