@@ -41,10 +41,14 @@ App.MainController = Ember.Controller.create
         callback null, error  
 
   ## logs out from Facebook
-  logout: ->
-
-    App.fbDataSource.fblogout()
-    this.set "isLoggedIn", false
+  logout: (callback) ->
+    self = this
+    App.fbDataSource.fblogout (error) ->
+      self.set "isLoggedIn", false
+      unless error
+        callback null
+      else
+        callback error
 
   ## gets facebook picture
   getPhoto: (callback) ->

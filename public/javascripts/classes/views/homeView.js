@@ -34,9 +34,13 @@
       },
       logout: function() {
         var confirm;
-        confirm = window.confirm("Alert! You will be disconnected from Facebook");
+        confirm = window.confirm("ALERT! YOU WILL BE DISCONNECTED FROM FACEBOOK");
         if (confirm) {
-          return App.MainController.logout();
+          return App.MainController.logout(function(error) {
+            if (error) {
+              return location.reload();
+            }
+          });
         }
       },
       goPlay: function() {

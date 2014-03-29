@@ -41,8 +41,7 @@
             return self.registerUser(user, callback);
           },
           error: function(error) {
-            console.log(JSON.stringify(error));
-            if (JSON.stringify(error)(!"{}")) {
+            if (JSON.stringify(error) !== "{}") {
               callback(null, error);
             }
             return console.log("USER NOT CONNECTED");
@@ -50,8 +49,15 @@
         });
       });
     },
-    fblogout: function() {
-      FB.logout();
+    fblogout: function(callback) {
+      FB.getLoginStatus(function(response) {
+        if (response.status === "unknown") {
+          return callback(error);
+        } else {
+          FB.logout();
+          return callback(null);
+        }
+      });
       return console.log("USER DISCONNECTED");
     },
     registerUser: function(user, callback) {

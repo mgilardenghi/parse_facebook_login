@@ -33,7 +33,7 @@ App.fbDataSource = Ember.Object.create
         cookie     : true                 ## enable cookies to allow the server to access the session
         xfbml      : false                ## parse XFBML, used to include social plugins such as facebook 'like' button
   
-  # logs in Parse with facebook
+  ## logs in Parse with facebook
   fbLogin: (callback) ->
     
     self = this
@@ -50,15 +50,20 @@ App.fbDataSource = Ember.Object.create
           self.registerUser user, callback
         error: (error) ->
           ## if user closes facebook login pop-up, error is empty so its not sent
-          console.log JSON.stringify(error)
-          if JSON.stringify(error) not "{}"
+          unless JSON.stringify(error) == "{}"
             callback null, error
           console.log "USER NOT CONNECTED"
  
-  # logs out from Facebook
-  fblogout: ->
-    
-    FB.logout()
+  ## logs out from Facebook
+  ## logout will throw an error if user is not connected to Facebook
+  fblogout: (callback) ->
+
+    FB.getLoginStatus (response) ->
+      if response.status == "unknown"
+        callback error 
+      else
+        FB.logout()
+        callback null
     console.log "USER DISCONNECTED"
 
   # gets facebook data and creates user in Parse

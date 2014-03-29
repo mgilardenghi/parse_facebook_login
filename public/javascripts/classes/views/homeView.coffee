@@ -44,11 +44,15 @@ App.HomeView = Ember.View.extend
 					alert JSON.stringify(error)
 
 		## log out from Facebook
+		## if user is not connected to facebook logout will throw an error. It is neccesary to
+		## reload app in order to get a Facebook valid access token
 		logout: ->
 
-			confirm = window.confirm "Alert! You will be disconnected from Facebook"
+			confirm = window.confirm "ALERT! YOU WILL BE DISCONNECTED FROM FACEBOOK"
 			if confirm
-				App.MainController.logout()
+				App.MainController.logout (error) ->
+					if error
+						location.reload()
 
 		## transition to play route
 		goPlay: ->
