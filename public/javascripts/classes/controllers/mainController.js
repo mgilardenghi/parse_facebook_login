@@ -36,9 +36,8 @@
         }
       });
     },
-    logout: function(callback) {
-      App.fbDataSource.fblogout();
-      return this.set("isLoggedIn", false);
+    logout: function() {
+      return App.fbDataSource.fblogout();
     },
     getPhoto: function(callback) {
       var self;
