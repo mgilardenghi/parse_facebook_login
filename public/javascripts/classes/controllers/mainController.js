@@ -37,9 +37,11 @@
       });
     },
     logout: function() {
+      var self;
+      self = this;
       return App.fbDataSource.fblogout(function(error) {
         if (!error) {
-          this.set("isLoggedIn", false);
+          self.set("isLoggedIn", false);
           return callback(null);
         } else {
           return callback(error);
