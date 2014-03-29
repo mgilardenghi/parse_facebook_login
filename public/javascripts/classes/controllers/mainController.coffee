@@ -44,7 +44,7 @@ App.MainController = Ember.Controller.create
   logout: ->
 
     App.fbDataSource.fblogout()
-    self.set "isLoggedIn", false
+    this.set "isLoggedIn", false
 
   ## gets facebook picture
   getPhoto: (callback) ->

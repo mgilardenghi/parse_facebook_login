@@ -41,8 +41,8 @@
             return self.registerUser(user, callback);
           },
           error: function(error) {
-            console.log(error);
-            if (error) {
+            console.log(JSON.stringify(error));
+            if (JSON.stringify(error)(!"{}")) {
               callback(null, error);
             }
             return console.log("USER NOT CONNECTED");

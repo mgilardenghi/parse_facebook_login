@@ -50,8 +50,8 @@ App.fbDataSource = Ember.Object.create
           self.registerUser user, callback
         error: (error) ->
           ## if user closes facebook login pop-up, error is empty so its not sent
-          console.log error
-          if error
+          console.log JSON.stringify(error)
+          if JSON.stringify(error) not "{}"
             callback null, error
           console.log "USER NOT CONNECTED"
  

@@ -38,7 +38,7 @@
     },
     logout: function() {
       App.fbDataSource.fblogout();
-      return self.set("isLoggedIn", false);
+      return this.set("isLoggedIn", false);
     },
     getPhoto: function(callback) {
       var self;
