@@ -4,8 +4,8 @@
 App.fbDataSource = Ember.Object.create
   
   ## parse pair of keys
-  applicationId: "PARSE_APPLICATION_ID"
-  javaScriptKey: "PARSE_JAVASCRIPT_KEY"
+  applicationId: "QHxNvKcA8CWf1lPooLFa0ZiMP1CoqM6jVJpePuc6"
+  javaScriptKey: "RiQLLP8KXJINVz8IdH2psgszdrXlP6SWmtrLrRqI"
   
   init: ->
 
@@ -29,9 +29,9 @@ App.fbDataSource = Ember.Object.create
     window.fbAsyncInit = ->
 
       Parse.FacebookUtils.init
-        appId      : "FACEBOOK APP KEY"   ## facebook APP ID
-        cookie     : true                 ## enable cookies to allow the server to access the session
-        xfbml      : false                ## parse XFBML, used to include social plugins such as facebook 'like' button
+        appId      : "1396886397242959 APP KEY"   ## facebook APP ID
+        cookie     : true                         ## enable cookies to allow the server to access the session
+        xfbml      : false                        ## parse XFBML, used to include social plugins such as facebook 'like' button
   
   # logs in Parse with facebook
   fbLogin: (callback) ->
