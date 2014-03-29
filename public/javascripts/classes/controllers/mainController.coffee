@@ -1,12 +1,21 @@
 
+## EMBER APP - MAIN CONTROLLER 
+
 App.MainController = Ember.Controller.create
   
+  ## data models
   user: null
   game: null
+  
+  ## boolean that shows user data in home template when 'true'
+  ## else shows login button
   isLoggedIn: false
+  
+  ## local variables
   randoms: []
   random: 0
 
+  ## log in Parse with facebook - creates or updates facebook user in Parse
   login: (callback) ->
 
     self = this
@@ -31,11 +40,13 @@ App.MainController = Ember.Controller.create
       else
         callback null, error  
 
+  ## logs out of Parse
   logout: ->
 
     App.fbDataSource.fblogout()
     this.set "isLoggedIn", false
 
+  ## gets facebook picture
   getPhoto: (callback) ->
 
     self = this
@@ -47,6 +58,7 @@ App.MainController = Ember.Controller.create
       else
         callback error
 
+  ## creates random numbers for user's friends 
   getRandom: ->
 
     min = 0
@@ -57,6 +69,7 @@ App.MainController = Ember.Controller.create
     this.randoms.push random
     return random
 
+  ## compares friend's real name with typed name by user and updates score
   updateScore: (typedName, callback) ->
 
     realName =  App.fbDataSource.normalize this.user.friends[this.random].first_name

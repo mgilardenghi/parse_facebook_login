@@ -1,14 +1,18 @@
 
+## DATA SOURCE - BACKGROUND PROCESSES THAT CREATE FACEBOOK USER IN PARSE
+
 App.fbDataSource = Ember.Object.create
   
-  applicationId: "QHxNvKcA8CWf1lPooLFa0ZiMP1CoqM6jVJpePuc6"
-  javaScriptKey: "RiQLLP8KXJINVz8IdH2psgszdrXlP6SWmtrLrRqI"
+  ## parse pair of keys
+  applicationId: "PARSE_APPLICATION_ID"
+  javaScriptKey: "PARSE_JAVASCRIPT_KEY"
   
   init: ->
 
+    ## inits parse sdk
     Parse.initialize this.get("applicationId"), this.get("javaScriptKey")
   
-    ## include Facebook SDK script
+    ## includes Facebook SDK script in index file
     ((d) ->
       js = undefined
       id = 'facebook-jssdk'
@@ -21,16 +25,15 @@ App.fbDataSource = Ember.Object.create
       ref.parentNode.insertBefore js, ref
     ) document   
  
-    ## Load Parse SDK - must be initialized when facebook SDK initialization ends
+    ## Loads Parse SDK - must be initialized when facebook SDK initialization ends
     window.fbAsyncInit = ->
 
       Parse.FacebookUtils.init
-        appId      : "1396886397242959"   ## facebook APP ID
+        appId      : "FACEBOOK APP KEY"   ## facebook APP ID
         cookie     : true                 ## enable cookies to allow the server to access the session
         xfbml      : false                ## parse XFBML, used to include social plugins such as facebook 'like' button
   
-
-  # log in Parse with facebook
+  # logs in Parse with facebook
   fbLogin: (callback) ->
     
     self = this
@@ -46,20 +49,19 @@ App.fbDataSource = Ember.Object.create
           console.log "USER NOT CONNECTED"
           callback null, error
  
-  
-  # log out of Parse
+  # logs out of Parse
   fblogout: ->
 
     Parse.User.logOut()
     console.log "USER DISCONNECTED"
 
-
-  # get facebook data and create user in Parse
+  # gets facebook data and creates user in Parse
   registerUser: (user, callback) ->
     
     self = this
     FB.api "/me?fields=id, name, first_name, last_name, email", (response) ->         
       unless response.error
+        ## normalizes strings and registers data in Parse 
         user.setUsername self.normalize(response.name) 
         user.setEmail response.email
         user.save null,
@@ -73,20 +75,19 @@ App.fbDataSource = Ember.Object.create
         callback null, response.error
   
   
-  # normalize string
+  # normalizes strings
   normalize: (string) ->
-
-    Unaccepted = "áàäéèëíìïóòöúùuñÁÀÄÉÈËÍÌÏÓÒÖÚÙÜÑçÇ' '"    # blanks are also removed  
+                                                            # removes 'tildes' (Latin America Names)
+    Unaccepted = "áàäéèëíìïóòöúùuñÁÀÄÉÈËÍÌÏÓÒÖÚÙÜÑçÇ' '"    # and blanks
     accepted = "aaaeeeiiiooouuunAAAEEEIIIOOOUUUNcC''"       # Example: 'firstNamelastName'   
     output = string                               
     i = 0
     while i < Unaccepted.length
       output = output.replace new RegExp(Unaccepted.charAt(i),"gm"), accepted.charAt(i)   # RegExp creates a regular expression
       i++                                                                                 # where g = global and m = multiline in                                                                                        # order to remove all unaccepted characters apparences
-    output.toLowerCase()
+    output.toLowerCase()  ## every string is lower case
   
- 
-  # get user picture
+  # get facebook user picture
   getPhoto: (userId, callback) ->
 
     query = "/" + userId + "/picture" 
@@ -96,8 +97,7 @@ App.fbDataSource = Ember.Object.create
       else
         callback null, response.error 
   
- 
-  # get user friends list
+  # get facebook user friends list
   getFriends: (callback) ->
 
     self = this
@@ -107,7 +107,6 @@ App.fbDataSource = Ember.Object.create
       else
         callback null, response.error
  
-
   # Post the score to Facebook Timeline
   postToTimeline: (postMessage, callback) ->
     

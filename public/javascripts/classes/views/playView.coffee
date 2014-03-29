@@ -1,17 +1,24 @@
 
+## PLAY VIEW - UPDATES PLAY TEMPLATE DATA
+
 App.PlayView = Ember.View.extend
 	
 	templateName: "play"
+
+	## boolean that checks if last user's friend has already been shown
 	isLastFriend: false
 
 	init: ->
 
+		## shows first user friend data when rendered play route
+		## creates game model data in order to save friends counter and score
 		this._super()
 		App.MainController.set "game", App.gameData.create()
 		this.updateFriend()
 
 	updateFriend: ->
 
+		## updates play template width user's friend data
 		self = this
 		App.MainController.getPhoto (error) ->
 			unless error
@@ -22,8 +29,10 @@ App.PlayView = Ember.View.extend
 			else
 				alert JSON.stringify(error)
 
+	## play template clicks events
 	actions:
 
+		## shows next friend
 		nextFriend: ->
 
 			self = this
@@ -34,6 +43,7 @@ App.PlayView = Ember.View.extend
 					self.set "isLastFriend", true
 					console.log "\nGAME OVER!"
 
+		## transition to score route
 		goScore: ->
     	
 			this.set "isLastFriend", false

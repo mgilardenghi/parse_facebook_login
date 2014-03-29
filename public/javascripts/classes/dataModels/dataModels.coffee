@@ -1,4 +1,7 @@
 
+## DATA MODELS - STORE APPLICATION DATA THAT IS SHOWN IN TEMPLATES
+
+## CURRENT USER DATA
 App.userData = Ember.Object.extend
 	
 	firstname: null
@@ -10,6 +13,7 @@ App.userData = Ember.Object.extend
 
 		return this.firstname + " " + this.lastname 
 
+## GAME DATA
 App.gameData = Ember.Object.extend
 	
 	picture: null

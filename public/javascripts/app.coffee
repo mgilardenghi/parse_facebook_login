@@ -1,6 +1,8 @@
 
-## EMBER APP
-window.App = Ember.Application.create() 	##LOG_ACTIVE_GENERATION: true
+## EMBER APPLICATION
+window.App = Ember.Application.create(
+	LOG_ACTIVE_GENERATION: true
+)
 	
 ## ROUTER - ROUTES MAP
 App.Router.map -> 

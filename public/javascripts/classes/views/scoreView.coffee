@@ -1,15 +1,20 @@
 
+## SCORE VIEW - UPDATES SCORE TEMPLATE DATA 
+
 App.ScoreView = Ember.View.extend
 
 	templateName: "score"
 
 	init: ->
 
+		## shows final score in score template
 		this._super()
 		this.set "finalScore", App.MainController.game.score
 
+	## score template clicks events
 	actions:
 		
+		## posts score to facebook timeline
 		post: ->
 
 			App.MainController.post (error) ->
@@ -18,6 +23,7 @@ App.ScoreView = Ember.View.extend
 				else
 					alert JSON.stringify(error)
 
+		## transitions to home route
 		goHome: ->
 
 			this.get("controller").transitionToRoute "home"
