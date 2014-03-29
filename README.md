@@ -1,5 +1,4 @@
-
 Spell Your Friends
 ------------------
 
-A [link](http://limitless-ridge-7864.herokuapp.com/).
+Ember app: [link](http://limitless-ridge-7864.herokuapp.com/).
