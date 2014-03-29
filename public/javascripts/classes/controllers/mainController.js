@@ -36,8 +36,10 @@
         }
       });
     },
-    logout: function() {
-      return App.fbDataSource.fblogout();
+    logout: function(callback) {
+      return App.fbDataSource.fblogout(function() {
+        return callback();
+      });
     },
     getPhoto: function(callback) {
       var self;

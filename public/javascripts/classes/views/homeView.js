@@ -37,8 +37,9 @@
         var confirm;
         confirm = window.confirm("ALERT: You will be disconnected from Facebook!");
         if (confirm) {
-          App.MainController.logout();
-          return location.reload();
+          return App.MainController.logout(function() {
+            return location.reload;
+          });
         }
       },
       goPlay: function() {

@@ -56,10 +56,11 @@ App.fbDataSource = Ember.Object.create
  
   ## logs out from Facebook
   ## logout will throw an error if user is not connected to Facebook
-  fblogout: ->
+  fblogout: (callback) ->
     
-    FB.logout()  
+    FB.logout()
     console.log "USER DISCONNECTED"
+    callback()
 
   # gets facebook data and creates user in Parse
   registerUser: (user, callback) ->

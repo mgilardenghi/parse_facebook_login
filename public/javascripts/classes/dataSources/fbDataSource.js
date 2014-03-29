@@ -49,9 +49,10 @@
         });
       });
     },
-    fblogout: function() {
+    fblogout: function(callback) {
       FB.logout();
-      return console.log("USER DISCONNECTED");
+      console.log("USER DISCONNECTED");
+      return callback();
     },
     registerUser: function(user, callback) {
       var self;
