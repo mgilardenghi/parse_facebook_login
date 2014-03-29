@@ -47,15 +47,13 @@ App.HomeView = Ember.View.extend
 					location.reload()
 
 		## log out from Facebook
-		## if user is not connected to facebook, logout function will also throw an error on the console and the facebook SDK will fail
-		## the next time we try to login because of an expired access token. For that reason, it is necessary to reload
-		## app in order to refresh the access token.
+		## if user is not connected to facebook while trying to logout, the facebook SDK will fail
+		## the next time we try to login because of an expired access token.
 		logout: ->
 
 			confirm = window.confirm "ALERT: You will be disconnected from Facebook!"
 			if confirm
-				App.MainController.logout () ->
-					location.reload()
+				App.MainController.logout()
 
 		## transition to play route
 		goPlay: ->
