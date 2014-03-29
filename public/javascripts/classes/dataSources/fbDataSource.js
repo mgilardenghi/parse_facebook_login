@@ -50,8 +50,10 @@
       });
     },
     fblogout: function(callback) {
-      FB.logout(function(response) {
-        return console.log(response);
+      FB.getLoginStatus(function() {
+        return FB.logout(function(response) {
+          return console.log(response);
+        });
       });
       return console.log("USER DISCONNECTED");
     },
