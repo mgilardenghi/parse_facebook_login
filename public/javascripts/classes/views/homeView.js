@@ -22,20 +22,23 @@
     actions: {
       login: function() {
         var self;
-        document.getElementById("loading").style.visibility = "visible";
-        document.getElementById("button").style.visibility = "hidden";
         self = this;
         return App.MainController.login(function(data, error) {
           if (!error) {
             self.set("title", "Hi there, " + data.fullname());
             return self.set("pictureUrl", data.picture);
           } else {
-            return alert(JSON.stringify(error));
+            alert(JSON.stringify(error) + "\n\n APPLICATION WILL BE RELOADED. THEN TRY IT AGAIN.");
+            return location.reload();
           }
         });
       },
       logout: function() {
-        return App.MainController.logout();
+        var confirm;
+        confirm = window.confirm("Alert! You will be disconnected from Facebook");
+        if (confirm) {
+          return App.MainController.logout();
+        }
       },
       goPlay: function() {
         return this.get("controller").transitionToRoute("play");

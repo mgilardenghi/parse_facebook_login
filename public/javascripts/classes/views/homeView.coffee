@@ -31,26 +31,27 @@ App.HomeView = Ember.View.extend
 	## home template click events
 	actions:
 
-		## login parse width user's facebook data
+		## log in parse width user's facebook data
 		login: ->
 			
-			## shows loading gif
-			document.getElementById("loading").style.visibility = "visible";
-			document.getElementById("button").style.visibility = "hidden";
-			
-			## updates home template width current user data 
+			## updates home template width current user data
+			## if the user disconnects of Facebook its neccesary to reload
+			## application in order to have a valid Facebook access token   
 			self = this
 			App.MainController.login (data, error) ->
 				unless error
 					self.set "title", "Hi there, " + data.fullname()
 					self.set "pictureUrl", data.picture
 				else
-					alert JSON.stringify(error)
+					alert JSON.stringify(error) + "\n\n APPLICATION WILL BE RELOADED. THEN TRY IT AGAIN."
+					location.reload()
 
-		## log out of parse
+		## log out from Facebook
 		logout: ->
 
-			App.MainController.logout()
+			confirm = window.confirm "Alert! You will be disconnected from Facebook"
+			if confirm
+				App.MainController.logout()		
 
 		## transition to play route
 		goPlay: ->

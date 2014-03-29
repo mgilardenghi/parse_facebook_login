@@ -12,7 +12,9 @@
           if (!error) {
             return alert("Congrats! Your score is now posted on Facebook.");
           } else {
-            return alert(JSON.stringify(error));
+            alert(JSON.stringify(error));
+            pp.MainController.set("isLoggedIn", false);
+            return self.get("controller").transitionToRoute("home");
           }
         });
       },

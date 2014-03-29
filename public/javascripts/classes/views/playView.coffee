@@ -28,6 +28,8 @@ App.PlayView = Ember.View.extend
 				console.log "\nReal Name: " + App.MainController.user.friends[App.MainController.random].first_name
 			else
 				alert JSON.stringify(error)
+				App.MainController.set "isLoggedIn", false
+				self.get("controller").transitionToRoute "home"
 
 	## play template clicks events
 	actions:

@@ -40,7 +40,7 @@ App.MainController = Ember.Controller.create
       else
         callback null, error  
 
-  ## logs out of Parse
+  ## logs out from Facebook
   logout: ->
 
     App.fbDataSource.fblogout()

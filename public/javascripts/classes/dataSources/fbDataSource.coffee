@@ -44,15 +44,18 @@ App.fbDataSource = Ember.Object.create
       Parse.FacebookUtils.logIn userPermission,                   
         success: (user) -> 
           console.log "USER CONNECTED"
+          ## shows loading gif until user is already registered in parse (connected to app)
+          document.getElementById("loading").style.visibility = "visible";
+          document.getElementById("button").style.visibility = "hidden";
           self.registerUser user, callback
         error: (error) ->
           console.log "USER NOT CONNECTED"
           callback null, error
  
-  # logs out of Parse
+  # logs out from Facebook
   fblogout: ->
 
-    Parse.User.logOut()
+    FB.logout()
     console.log "USER DISCONNECTED"
 
   # gets facebook data and creates user in Parse

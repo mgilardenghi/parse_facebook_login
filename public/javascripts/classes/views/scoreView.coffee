@@ -22,6 +22,8 @@ App.ScoreView = Ember.View.extend
 					alert "Congrats! Your score is now posted on Facebook."
 				else
 					alert JSON.stringify(error)
+					pp.MainController.set "isLoggedIn", false
+					self.get("controller").transitionToRoute "home"
 
 		## transitions to home route
 		goHome: ->

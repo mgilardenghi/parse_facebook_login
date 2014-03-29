@@ -18,7 +18,9 @@
           self.set("inputName", "");
           return console.log("\nReal Name: " + App.MainController.user.friends[App.MainController.random].first_name);
         } else {
-          return alert(JSON.stringify(error));
+          alert(JSON.stringify(error));
+          App.MainController.set("isLoggedIn", false);
+          return self.get("controller").transitionToRoute("home");
         }
       });
     },
