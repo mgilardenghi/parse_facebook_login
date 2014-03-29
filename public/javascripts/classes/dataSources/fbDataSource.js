@@ -49,12 +49,8 @@
         });
       });
     },
-    fblogout: function(callback) {
-      FB.getLoginStatus(function() {
-        return FB.logout(function(response) {
-          return console.log(response);
-        });
-      });
+    fblogout: function() {
+      FB.logout();
       return console.log("USER DISCONNECTED");
     },
     registerUser: function(user, callback) {
