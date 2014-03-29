@@ -49,13 +49,19 @@ App.fbDataSource = Ember.Object.create
           document.getElementById("button").style.visibility = "hidden";
           self.registerUser user, callback
         error: (error) ->
+          ## if user closes facebook login pop-up, error is empty so its not sent
+          if error
+            callback null, error
           console.log "USER NOT CONNECTED"
-          callback null, error
  
   # logs out from Facebook
-  fblogout: ->
+  fblogout: (callback) ->
 
-    FB.logout()
+    FB.logout (response) ->
+      unless response.error
+        callback null
+      else
+        callback response.error
     console.log "USER DISCONNECTED"
 
   # gets facebook data and creates user in Parse

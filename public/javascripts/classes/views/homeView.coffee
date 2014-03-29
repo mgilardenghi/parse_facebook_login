@@ -35,23 +35,25 @@ App.HomeView = Ember.View.extend
 		login: ->
 			
 			## updates home template width current user data
-			## if the user disconnects of Facebook its neccesary to reload
-			## application in order to have a valid Facebook access token   
 			self = this
 			App.MainController.login (data, error) ->
 				unless error
 					self.set "title", "Hi there, " + data.fullname()
 					self.set "pictureUrl", data.picture
 				else
-					alert JSON.stringify(error) + "\n\n APPLICATION WILL BE RELOADED. THEN TRY IT AGAIN."
-					location.reload()
+					alert JSON.stringify(error)
 
 		## log out from Facebook
+		## if the user disconnects from Facebook its neccesary to reload
+		## application in order to have a valid Facebook access token   
 		logout: ->
 
 			confirm = window.confirm "Alert! You will be disconnected from Facebook"
 			if confirm
-				App.MainController.logout()		
+				App.MainController.logout (error) ->
+					if error
+						alert JSON.stringify(error) + "\n\n APPLICATION WILL BE RELOADED. THEN TRY IT AGAIN."
+						location.reload()
 
 		## transition to play route
 		goPlay: ->

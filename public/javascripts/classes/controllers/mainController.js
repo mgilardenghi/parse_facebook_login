@@ -37,8 +37,14 @@
       });
     },
     logout: function() {
-      App.fbDataSource.fblogout();
-      return this.set("isLoggedIn", false);
+      return App.fbDataSource.fblogout(function(error) {
+        if (!error) {
+          this.set("isLoggedIn", false);
+          return callback(null);
+        } else {
+          return callback(error);
+        }
+      });
     },
     getPhoto: function(callback) {
       var self;

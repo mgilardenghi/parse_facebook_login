@@ -41,14 +41,22 @@
             return self.registerUser(user, callback);
           },
           error: function(error) {
-            console.log("USER NOT CONNECTED");
-            return callback(null, error);
+            if (error) {
+              callback(null, error);
+            }
+            return console.log("USER NOT CONNECTED");
           }
         });
       });
     },
-    fblogout: function() {
-      FB.logout();
+    fblogout: function(callback) {
+      FB.logout(function(response) {
+        if (!response.error) {
+          return callback(null);
+        } else {
+          return callback(response.error);
+        }
+      });
       return console.log("USER DISCONNECTED");
     },
     registerUser: function(user, callback) {

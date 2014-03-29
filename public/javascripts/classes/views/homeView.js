@@ -28,8 +28,7 @@
             self.set("title", "Hi there, " + data.fullname());
             return self.set("pictureUrl", data.picture);
           } else {
-            alert(JSON.stringify(error) + "\n\n APPLICATION WILL BE RELOADED. THEN TRY IT AGAIN.");
-            return location.reload();
+            return alert(JSON.stringify(error));
           }
         });
       },
@@ -37,7 +36,12 @@
         var confirm;
         confirm = window.confirm("Alert! You will be disconnected from Facebook");
         if (confirm) {
-          return App.MainController.logout();
+          return App.MainController.logout(function(error) {
+            if (error) {
+              alert(JSON.stringify(error) + "\n\n APPLICATION WILL BE RELOADED. THEN TRY IT AGAIN.");
+              return location.reload();
+            }
+          });
         }
       },
       goPlay: function() {
