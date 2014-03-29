@@ -50,9 +50,8 @@
       });
     },
     fblogout: function(callback) {
-      FB.logout();
-      console.log("USER DISCONNECTED");
-      return callback();
+      FB.logout(callback);
+      return console.log("USER DISCONNECTED");
     },
     registerUser: function(user, callback) {
       var self;
