@@ -50,15 +50,8 @@
       });
     },
     fblogout: function(callback) {
-      FB.getLoginStatus(function(response) {
-        console.log(response);
-        if (response.status === "unknown") {
-          console.log("error");
-          return callback("error");
-        } else {
-          FB.logout();
-          return callback(null);
-        }
+      FB.logout(function(response) {
+        return console.log(response);
       });
       return console.log("USER DISCONNECTED");
     },
