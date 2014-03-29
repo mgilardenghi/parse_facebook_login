@@ -43,7 +43,7 @@ App.HomeView = Ember.View.extend
 					self.set "title", "Hi there, " + data.fullname()
 					self.set "pictureUrl", data.picture
 				else
-					alert JSON.stringify(error) + "\n\n APPLICATION WILL BE RELOADED. TRY IT AGAIN."
+					alert JSON.stringify(error) + "\n\nYOUR ARE NOT CONNECTED TO FACEBOOK.\nWAIT FOR THE APPLICATION TO RELOAD AND TRY AGAIN."
 					location.reload()
 
 		## log out from Facebook
