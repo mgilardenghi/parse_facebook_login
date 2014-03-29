@@ -51,7 +51,7 @@
     },
     fblogout: function(callback) {
       FB.getLoginStatus(function(response) {
-        console.log("error");
+        console.log(response);
         if (response.status === "unknown") {
           console.log("error");
           return callback("error");
