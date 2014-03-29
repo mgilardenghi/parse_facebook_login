@@ -60,7 +60,7 @@ App.fbDataSource = Ember.Object.create
 
     FB.getLoginStatus (response) ->
       if response.status == "unknown"
-        callback error 
+        callback "error" 
       else
         FB.logout()
         callback null

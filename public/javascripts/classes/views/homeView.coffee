@@ -31,10 +31,10 @@ App.HomeView = Ember.View.extend
 	## home template click events
 	actions:
 
-		## log in parse width user's facebook data
+		## log in parse with user's facebook data
 		login: ->
 			
-			## updates home template width current user data
+			## updates home template with current user data
 			self = this
 			App.MainController.login (data, error) ->
 				unless error
@@ -42,13 +42,14 @@ App.HomeView = Ember.View.extend
 					self.set "pictureUrl", data.picture
 				else
 					alert JSON.stringify(error)
+					location.reload()
 
 		## log out from Facebook
 		## if user is not connected to facebook logout will throw an error. It is neccesary to
 		## reload app in order to get a Facebook valid access token
 		logout: ->
 
-			confirm = window.confirm "ALERT! YOU WILL BE DISCONNECTED FROM FACEBOOK"
+			confirm = window.confirm "ALERT: \nYou will be disconnected from Facebook!"
 			if confirm
 				App.MainController.logout (error) ->
 					if error

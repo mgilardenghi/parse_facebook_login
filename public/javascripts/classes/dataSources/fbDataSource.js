@@ -52,7 +52,7 @@
     fblogout: function(callback) {
       FB.getLoginStatus(function(response) {
         if (response.status === "unknown") {
-          return callback(error);
+          return callback("error");
         } else {
           FB.logout();
           return callback(null);

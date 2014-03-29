@@ -40,8 +40,8 @@
       var self;
       self = this;
       return App.fbDataSource.fblogout(function(error) {
-        self.set("isLoggedIn", false);
         if (!error) {
+          self.set("isLoggedIn", false);
           return callback(null);
         } else {
           return callback(error);

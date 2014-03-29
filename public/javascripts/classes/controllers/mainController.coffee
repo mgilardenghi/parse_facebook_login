@@ -44,8 +44,8 @@ App.MainController = Ember.Controller.create
   logout: (callback) ->
     self = this
     App.fbDataSource.fblogout (error) ->
-      self.set "isLoggedIn", false
       unless error
+        self.set "isLoggedIn", false
         callback null
       else
         callback error
