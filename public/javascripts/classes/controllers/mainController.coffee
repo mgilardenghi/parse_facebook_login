@@ -41,7 +41,7 @@ App.MainController = Ember.Controller.create
         callback null, error  
 
   ## logs out from Facebook
-  logout: ->
+  logout: (callback) ->
     self = this
     App.fbDataSource.fblogout (error) ->
       unless error

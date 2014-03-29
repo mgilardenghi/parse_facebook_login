@@ -36,7 +36,7 @@
         }
       });
     },
-    logout: function() {
+    logout: function(callback) {
       var self;
       self = this;
       return App.fbDataSource.fblogout(function(error) {
